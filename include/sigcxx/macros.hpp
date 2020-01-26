@@ -28,9 +28,9 @@
 //#endif
 
 #include <stdio.h>
-#define _DEBUG(fmt, args...) \
+#define _DEBUG(fmt, ...) \
     do { \
-        fprintf(stderr, "%s:%d:%s(): " fmt, FILE_BASE_NAME, __LINE__, __FUNCTION__, args); \
+        fprintf(stderr, "%s:%d:%s(): " fmt, FILE_BASE_NAME, __LINE__, __FUNCTION__, __VA_ARGS__); \
     } while (false)
 
 #include <cassert>
@@ -41,7 +41,7 @@
 
 #else // NOT __DEBUG__
 
-#define _DEBUG(fmt, args...) ((void)0)
+#define _DEBUG(fmt, ...) ((void)0)
 #define _ASSERT(expr) ((void)0)
 
 #endif // END __DEBUG__
